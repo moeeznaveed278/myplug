@@ -6,12 +6,31 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "seed:reviews": "npx tsx scripts/seed-reviews.ts"
   },
   "dependencies": {
+    "@clerk/nextjs": "^6.36.3",
+    "@hookform/resolvers": "^5.2.2",
+    "@prisma/client": "^5.22.0",
+    "@react-email/components": "^1.0.2",
+    "@react-email/render": "^2.0.0",
+    "clsx": "^2.1.1",
+    "dotenv": "^17.2.3",
+    "framer-motion": "^12.23.26",
+    "lucide-react": "^0.561.0",
     "next": "16.0.10",
+    "next-cloudinary": "^6.17.5",
+    "prisma": "^5.22.0",
     "react": "19.2.1",
-    "react-dom": "19.2.1"
+    "react-dom": "19.2.1",
+    "react-hook-form": "^7.68.0",
+    "resend": "^6.6.0",
+    "sonner": "^2.0.7",
+    "stripe": "^20.0.0",
+    "tailwind-merge": "^3.4.0",
+    "zod": "^4.1.13",
+    "zustand": "^5.0.9"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

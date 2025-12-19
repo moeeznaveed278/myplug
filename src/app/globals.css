@@ -2,7 +2,24 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0a0a0a;
+
+  /* Brand */
+  --brand: 37 99 235; /* blue-600 */
+  --brand-foreground: 255 255 255;
+
+  /* Surfaces */
+  --card: 255 255 255;
+  --card-foreground: 10 10 10;
+  --muted: 245 245 245;
+  --muted-foreground: 115 115 115;
+
+  /* Borders / rings */
+  --border: 229 229 229;
+  --ring: 37 99 235;
+
+  /* Radius */
+  --radius: 16px;
 }
 
 @theme inline {
@@ -15,12 +32,64 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #f5f5f5;
+
+    --card: 10 10 10;
+    --card-foreground: 245 245 245;
+    --muted: 23 23 23;
+    --muted-foreground: 163 163 163;
+
+    --border: 38 38 38;
+    --ring: 96 165 250; /* blue-400 */
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji",
+    "Segoe UI Emoji";
+}
+
+/* Nice default selection + smoother text */
+::selection {
+  background: rgba(var(--brand), 0.25);
+}
+
+/* Subtle, modern scrollbar (webkit) */
+@supports selector(::-webkit-scrollbar) {
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(115, 115, 115, 0.35);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(115, 115, 115, 0.5);
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+}
+
+/* Hide scrollbar (keeps scroll) */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* Shimmer animation for banner */
+@keyframes shimmer {
+  0%, 100% {
+    background-position: -200% center;
+  }
+  50% {
+    background-position: 200% center;
+  }
 }
