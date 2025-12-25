@@ -1,6 +1,9 @@
 import { db } from "@/lib/db";
 import { NextResponse } from "next/server";
 
+// Prevent this route from being pre-rendered during build
+export const dynamic = "force-dynamic";
+
 const testReviews = [
   {
     rating: 5,
@@ -44,8 +47,16 @@ const testReviews = [
   },
 ];
 
-export async function GET() {
+export async function GET(req: Request) {
   try {
+    // Only allow in development to prevent accidental seeding in production
+    if (process.env.NODE_ENV === "production") {
+      return NextResponse.json(
+        { error: "Seed endpoint is disabled in production" },
+        { status: 403 }
+      );
+    }
+
     // Get all products that are not archived
     const products = await db.product.findMany({
       where: { isArchived: false },
